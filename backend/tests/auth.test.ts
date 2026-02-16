@@ -85,6 +85,6 @@ describe('Auth Endpoints', () => {
                 password: 'wrongpassword'
             });
 
-        expect(res.statusCode).toEqual(400); // Or 401
+        expect(res.statusCode).toEqual(401);
     });
 });

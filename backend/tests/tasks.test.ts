@@ -23,6 +23,7 @@ let token: string;
 let taskId: string;
 
 beforeAll(async () => {
+    process.env.JWT_SECRET = 'test_secret';
     mongoServer = await MongoMemoryServer.create();
     const uri = mongoServer.getUri();
     await mongoose.connect(uri);
@@ -51,7 +52,7 @@ afterAll(async () => {
 describe('Task Endpoints', () => {
     it('should fail if unauthenticated', async () => {
         const res = await request(app).get('/api/tasks');
-        expect(res.statusCode).toBe(403); // Or 401
+        expect(res.statusCode).toBe(401); // Corrected to 401 (Unauthorized)
     });
 
     it('should create a new task', async () => {
