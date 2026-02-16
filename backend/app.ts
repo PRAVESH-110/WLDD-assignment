@@ -3,6 +3,7 @@ import { z } from "zod"
 import cors from "cors"
 import jwt from "jsonwebtoken"
 import connectDatabase from "./config/database"
+import { connectRedis } from "./config/redis"
 import userRouter from "./route/route.user"
 import taskRouter from "./route/route.task"
 const app = express();
@@ -33,10 +34,10 @@ app.use(cors({
 app.use("/api/auth/user", userRouter);
 app.use("/api/tasks", taskRouter);
 
-
 const connectServer = async () => {
     try {
         await connectDatabase();
+        await connectRedis();  // Connect to Redis
         const PORT = process.env.PORT || 5000;
         app.listen(PORT, () => {
             console.log("listening on port", PORT);

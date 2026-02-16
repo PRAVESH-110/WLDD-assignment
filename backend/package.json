@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon --exec ts-node app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,6 +19,7 @@
     "gitignore": "^0.7.0",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.2.1",
+    "nodemon": "^3.1.11",
     "redis": "^5.10.0",
     "zod": "^4.3.6"
   },
@@ -26,6 +28,8 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
-    "@types/node": "^25.2.3"
+    "@types/node": "^25.2.3",
+    "@types/redis": "^4.0.10",
+    "ts-node": "^10.9.2"
   }
 }

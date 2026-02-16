@@ -13,17 +13,18 @@ const taskSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ["pending", "completed"],
-        default: "pending"
+        default: "pending",
+        index: true  // Index for efficient filtering by status
     },
     dueDate: {
         type: Date,
 
     },
     owner: {
-        type: Schema.Types.ObjectId,  // Fixed: Use Schema.Types.ObjectId
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
-        index: true
+        index: true  // Index for efficient queries by owner
     }
 }, {
     timestamps: true  // This creates createdAt and updatedAt automatically
