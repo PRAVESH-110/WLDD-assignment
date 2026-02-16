@@ -48,4 +48,10 @@ const connectServer = async () => {
         process.exit(1);
     }
 }
-connectServer();
+
+// Only start server if not in test mode
+if (process.env.NODE_ENV !== 'test') {
+    connectServer();
+}
+
+export default app;
