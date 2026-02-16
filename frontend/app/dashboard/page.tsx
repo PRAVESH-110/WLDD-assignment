@@ -104,7 +104,7 @@ export default function Dashboard() {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-zinc-900">
             {/* Navbar */}
-            <nav className="bg-white shadow dark:bg-zinc-800">
+            <nav className=" shadow ">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex items-center">
@@ -113,8 +113,11 @@ export default function Dashboard() {
                         <div className="flex items-center space-x-4">
                             <span className="text-gray-700 dark:text-gray-300">Welcome, {user?.fname}</span>
                             <button
-                                onClick={logout}
-                                className="px-3 py-2 text-sm text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+                                onClick={() => {
+                                    logout();
+                                    window.location.href = '/';
+                                }}
+                                className="px-3 py-2 border-1 hover:cursor-pointer text-sm text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-500"
                             >
                                 Logout
                             </button>

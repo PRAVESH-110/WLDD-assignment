@@ -4,7 +4,8 @@ dotenv.config();
 
 // Create Redis client
 const redisClient = createClient({
-    url: process.env.REDIS_URL || 'redis://localhost:6379'
+    url: process.env.REDIS_URL || 'redis://localhost:6379',
+    disableOfflineQueue: true, // 👈 Fail immediately if offline (stops blocking)
 });
 
 // Error handling
