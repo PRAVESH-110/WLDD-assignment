@@ -11,6 +11,7 @@ interface AuthContextType {
     isAuthenticated: boolean;
     token: string | null;
     user: User | null;
+    loading: boolean;
     login: (token: string, user: User) => void;
     logout: () => void;
 }
@@ -21,6 +22,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [token, setToken] = useState<string | null>(null);
     const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
@@ -42,6 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 setIsAuthenticated(true);
             }
         }
+        setLoading(false); // Mark loading as complete
     }, [])
 
     function isTokenExpired(token: string): boolean {
@@ -79,7 +82,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
 
     return (
-        <AuthContext.Provider value={{ isAuthenticated, token, user, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, token, user, loading, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
